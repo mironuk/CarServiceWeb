@@ -16,6 +16,9 @@ public class Car {
 	@Column(name="car_id")
 	private long carId;
 
+	@Column(name="user_id")
+	private long userId;
+
 	@Column(name="make")
 	private String make;
 
@@ -34,6 +37,14 @@ public class Car {
 
 	public void setCarId(long carId) {
 		this.carId = carId;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public String getMake() {
