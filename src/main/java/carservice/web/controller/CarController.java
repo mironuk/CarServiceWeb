@@ -22,4 +22,8 @@ public class CarController {
 		return "home";
 	}
 
+    public CarService getCarService() {
+        return carService;
+    }
+
 }
