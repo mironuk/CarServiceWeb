@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,12 +21,13 @@ public class ServiceItem {
 	@Column(name="service_item_id")
 	private long serviceItemId;
 
-	@Column(name="car_id")
-	private long carId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="car_id")
+	private Car car;
 
 	@Column(name="service_date")
 	private Date serviceDate;
-	
+
 	@Column(name="location")
 	private String location;
 
@@ -33,6 +37,8 @@ public class ServiceItem {
 	@Column(name="description")
 	private String description;
 
+
+
 	public long getServiceItemId() {
 		return serviceItemId;
 	}
@@ -41,15 +47,15 @@ public class ServiceItem {
 		this.serviceItemId = serviceItemId;
 	}
 
-	public long getCarId() {
-		return carId;
-	}
+	public Car getCar() {
+        return car;
+    }
 
-	public void setCarId(long carId) {
-		this.carId = carId;
-	}
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
-	public Date getServiceDate() {
+    public Date getServiceDate() {
 		return serviceDate;
 	}
 

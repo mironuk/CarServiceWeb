@@ -17,12 +17,18 @@ public class User {
 	@Column(name="user_id")
 	private long userId;
 
+    @Column(name="email")
+    private String email;
+
 	@NotNull
-	@Column(name="login")
+	@Column(name="login", unique = true)
 	private String login;
 
+    @NotNull
 	@Column(name="password")
 	private String password;
+
+
 
 	public long getUserId() {
 		return userId;
@@ -32,7 +38,15 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getLogin() {
+	public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLogin() {
 		return login;
 	}
 
