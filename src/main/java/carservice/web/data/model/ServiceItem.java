@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="service_item")
@@ -21,6 +22,7 @@ public class ServiceItem {
 	@Column(name="service_item_id")
 	private long serviceItemId;
 
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="car_id")
 	private Car car;

@@ -1,27 +1,27 @@
-create table user (
-    user_id bigint not null auto_increment,
-    email varchar(128),
-    login varchar(64) unique not null,
-    pass char(64) not null,
-    primary key(user_id)
-) engine = InnoDB default charset = utf8;
+CREATE TABLE user (
+    user_id BIGINT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(128),
+    login VARCHAR(64) UNIQUE NOT NULL,
+    pass CHAR(64) NOT NULL,
+    PRIMARY KEY(user_id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-create table car (
-    car_id bigint not null auto_increment,
-    user_id bigint not null,
-    make varchar(255),
-    model varchar(255),
-    year smallint,
-    description varchar(255),
-    primary key(car_id)
-) engine = InnoDB default charset = utf8;
+CREATE TABLE car (
+    car_id BIGINT NOT NULL AUTO_INCREMENT,
+    user_id BIGINT NOT NULL,
+    make VARCHAR(255),
+    model VARCHAR(255),
+    year SMALLINT,
+    description VARCHAR(255),
+    PRIMARY KEY(car_id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-create table service_item (
-    service_item_id bigint not null auto_increment,
-    car_id bigint not null,
-    service_date datetime,
-    location varchar(255),
-    service_company varchar(255),
-    description varchar(255),
-    primary key(service_item_id)
-) engine = InnoDB default charset = utf8;
+CREATE TABLE service_item (
+    service_item_id BIGINT NOT NULL AUTO_INCREMENT,
+    car_id bigint NOT NULL,
+    service_date DATETIME,
+    location VARCHAR(255),
+    service_company VARCHAR(255),
+    description VARCHAR(255),
+    PRIMARY KEY(service_item_id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;

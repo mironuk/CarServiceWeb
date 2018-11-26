@@ -1,4 +1,9 @@
--- TODO
-create database ${database.dbname} default character set utf8 default collate utf8_general_ci;
-set storage_engine = InnoDB;
-grant all privileges on ${database.dbname}.* to ${database.username}@'%' identified by '${database.password}';
+CREATE DATABASE <database_dbname>
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci;
+
+SET storage_engine = InnoDB;
+
+GRANT ALL PRIVILEGES ON <database_dbname>.*
+TO <database_username>@'%'
+IDENTIFIED BY '<database_password>';
