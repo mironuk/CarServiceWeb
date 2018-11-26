@@ -4,7 +4,7 @@ CREATE TABLE user (
     login VARCHAR(64) UNIQUE NOT NULL,
     pass CHAR(64) NOT NULL,
     PRIMARY KEY(user_id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+);
 
 CREATE TABLE car (
     car_id BIGINT NOT NULL AUTO_INCREMENT,
@@ -14,7 +14,7 @@ CREATE TABLE car (
     year SMALLINT,
     description VARCHAR(255),
     PRIMARY KEY(car_id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+);
 
 CREATE TABLE service_item (
     service_item_id BIGINT NOT NULL AUTO_INCREMENT,
@@ -24,4 +24,4 @@ CREATE TABLE service_item (
     service_company VARCHAR(255),
     description VARCHAR(255),
     PRIMARY KEY(service_item_id)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+);
