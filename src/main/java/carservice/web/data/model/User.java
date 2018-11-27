@@ -17,7 +17,8 @@ public class User {
 	@Column(name="user_id")
 	private long userId;
 
-    @Column(name="email")
+    @NotNull
+    @Column(name="email", unique = true)
     private String email;
 
 	@NotNull
