@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import carservice.web.data.model.Car;
+import carservice.web.data.model.User;
 import carservice.web.data.repository.CarRepository;
 
 @RunWith(SpringRunner.class)
@@ -32,6 +33,9 @@ public class CarServiceTest {
 	public void testCreateCar() {
 		// Arrange
 		Car car = new Car();
+		User user = new User();
+		user.setUserId(1L);
+        car.setUser(user);
 		car.setMake("Mazda");
 		car.setModel("3");
 		car.setYear(2004);
