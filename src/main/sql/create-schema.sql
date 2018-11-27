@@ -1,5 +1,5 @@
 CREATE TABLE user (
-    user_id UNSIGNED INT NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     email VARCHAR(128) UNIQUE NOT NULL,
     login VARCHAR(64) UNIQUE NOT NULL,
     pass CHAR(64) NOT NULL,
@@ -7,8 +7,8 @@ CREATE TABLE user (
 );
 
 CREATE TABLE car (
-    car_id UNSIGNED INT NOT NULL AUTO_INCREMENT,
-    user_id UNSIGNED INT NOT NULL,
+    car_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
     make VARCHAR(255),
     model VARCHAR(255),
     year SMALLINT,
@@ -17,8 +17,8 @@ CREATE TABLE car (
 );
 
 CREATE TABLE service_item (
-    service_item_id UNSIGNED INT NOT NULL AUTO_INCREMENT,
-    car_id UNSIGNED INT NOT NULL,
+    service_item_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    car_id INT UNSIGNED NOT NULL,
     service_date DATETIME,
     location VARCHAR(255),
     service_company VARCHAR(255),
