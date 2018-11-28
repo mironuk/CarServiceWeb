@@ -18,39 +18,39 @@ import carservice.web.data.repository.CarRepository;
 @SpringBootTest
 public class CarServiceTest {
 
-	@Autowired
-	private CarRepository carRepository;
+    @Autowired
+    private CarRepository carRepository;
 
-	@Autowired
-	private CarService carService;
+    @Autowired
+    private CarService carService;
 
-	@Before
-	public void init() {
-		carRepository.deleteAll();
-	}
+    @Before
+    public void init() {
+        carRepository.deleteAll();
+    }
 
-	@Test
-	public void testCreateCar() {
-		// Arrange
-		Car car = new Car();
-		User user = new User();
-		user.setUserId(1L);
+    @Test
+    public void testCreateCar() {
+        // Arrange
+        Car car = new Car();
+        User user = new User();
+        user.setUserId(1L);
         car.setUser(user);
-		car.setMake("Mazda");
-		car.setModel("3");
-		car.setYear(2004);
+        car.setMake("Mazda");
+        car.setModel("3");
+        car.setYear(2004);
 
-		// Act
-		carService.createCar(car);
+        // Act
+        carService.createCar(car);
 
-		// Assert
-		long carId = car.getCarId();
-		Car testCar = carService.getCar(carId).get();
-		assertNotNull(testCar);
+        // Assert
+        long carId = car.getCarId();
+        Car testCar = carService.getCar(carId).get();
+        assertNotNull(testCar);
 
-		assertEquals("Mazda", testCar.getMake());
-		assertEquals("3", testCar.getModel());
-		assertEquals(2004, testCar.getYear());
-	}
+        assertEquals("Mazda", testCar.getMake());
+        assertEquals("3", testCar.getModel());
+        assertEquals(2004, testCar.getYear());
+    }
 
 }
