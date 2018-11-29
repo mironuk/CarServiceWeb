@@ -11,12 +11,11 @@ import carservice.web.data.repository.CarRepository;
 @Transactional(readOnly=false)
 public class CarServiceTx {
 
-	@Autowired
-	private CarRepository carRepository;
+    @Autowired
+    private CarRepository carRepository;
 
-	public void createCar(Car car) {
-		carRepository.save(car);
-	}
-
+    public void createCar(Car car) {
+        carRepository.save(car);
+    }
 
 }

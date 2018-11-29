@@ -15,8 +15,8 @@ h2 {
 }
 
 .block {
-	float: left;
-	border: 1px dashed green;
-	margin: 10px;
-	border-radius: 5px;
+    float: left;
+    border: 1px dashed green;
+    margin: 10px;
+    border-radius: 5px;
 }

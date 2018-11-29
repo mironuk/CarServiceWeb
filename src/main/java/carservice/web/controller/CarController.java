@@ -9,18 +9,18 @@ import carservice.web.service.CarService;
 @Controller
 public class CarController {
 
-	@Autowired
-	private CarService carService;
+    @Autowired
+    private CarService carService;
 
-	@GetMapping("/")
-	public String root() {
-		return "redirect:/home";
-	}
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/home";
+    }
 
-	@GetMapping("/home")
-	public String home() {
-		return "home";
-	}
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
 
     public CarService getCarService() {
         return carService;

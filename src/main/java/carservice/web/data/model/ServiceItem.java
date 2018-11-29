@@ -17,39 +17,39 @@ import javax.validation.constraints.NotNull;
 @Table(name="service_item")
 public class ServiceItem {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="service_item_id")
-	private long serviceItemId;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="service_item_id")
+    private long serviceItemId;
 
-	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="car_id")
-	private Car car;
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="car_id")
+    private Car car;
 
-	@Column(name="service_date")
-	private Date serviceDate;
+    @Column(name="service_date")
+    private Date serviceDate;
 
-	@Column(name="location")
-	private String location;
+    @Column(name="location")
+    private String location;
 
-	@Column(name="service_company")
-	private String serviceCompany;
+    @Column(name="service_company")
+    private String serviceCompany;
 
-	@Column(name="description")
-	private String description;
+    @Column(name="description")
+    private String description;
 
 
 
-	public long getServiceItemId() {
-		return serviceItemId;
-	}
+    public long getServiceItemId() {
+        return serviceItemId;
+    }
 
-	public void setServiceItemId(long serviceItemId) {
-		this.serviceItemId = serviceItemId;
-	}
+    public void setServiceItemId(long serviceItemId) {
+        this.serviceItemId = serviceItemId;
+    }
 
-	public Car getCar() {
+    public Car getCar() {
         return car;
     }
 
@@ -58,35 +58,35 @@ public class ServiceItem {
     }
 
     public Date getServiceDate() {
-		return serviceDate;
-	}
+        return serviceDate;
+    }
 
-	public void setServiceDate(Date serviceDate) {
-		this.serviceDate = serviceDate;
-	}
+    public void setServiceDate(Date serviceDate) {
+        this.serviceDate = serviceDate;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public String getServiceCompany() {
-		return serviceCompany;
-	}
+    public String getServiceCompany() {
+        return serviceCompany;
+    }
 
-	public void setServiceCompany(String serviceCompany) {
-		this.serviceCompany = serviceCompany;
-	}
+    public void setServiceCompany(String serviceCompany) {
+        this.serviceCompany = serviceCompany;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }
