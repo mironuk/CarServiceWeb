@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient,  HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Text } from './text.dto';
+import { TextWrapper } from './text.wrapper.dto';
 
 @Component({
     selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent {
 
     private showResult(): void {
         this.result = 'loading...';
-        this.http.get<Text>('/rest/show-result').subscribe(res => this.result = res.text);
+        this.http.get<TextWrapper>('/rest/show-result').subscribe(res => this.result = res.text);
     }
 
 }

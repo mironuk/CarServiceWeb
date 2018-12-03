@@ -1,6 +1,6 @@
 package carservice.web.data.dto;
 
-public class TextDto {
+public class TextWrapperDto {
 
     private String text;
 
