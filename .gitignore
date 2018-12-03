@@ -10,4 +10,6 @@
 /assemble.bat
 /assembleAndRun.bat
 /build.bat
+/buildAndRun.bat
+/clean.bat
 /run.bat
