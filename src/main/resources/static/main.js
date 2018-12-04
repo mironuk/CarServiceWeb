@@ -227,7 +227,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Work\CarService\CarServiceWeb\src\main\webapp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Work\CarService\CarServiceWeb\client\src\main.ts */"./src/main.ts");
 
 
 /***/ })
