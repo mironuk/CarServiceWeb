@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import carservice.web.data.dto.TextWrapperDto;
 
 @RestController()
-@RequestMapping(path="/rest", produces = "application/json")
+@RequestMapping(path = "/rest", produces = "application/json")
 public class ShowResultController {
 
     private static Gson gson = new Gson();
