@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    font-family: Open Sans;
+}
+
+body {
+    background-color: lemonchiffon;
+}
+
+h1, div {
+    padding: 10px;
+}
+
+h2 {
+    color: red;
+}
+
+.center {
+    text-align: center;
+}
+
+.center-block {
+    border: 1px dashed green;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.block {
+    float: left;
+    border: 1px dashed green;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.width300px {
+    width: 300px;
+}
