@@ -14,9 +14,23 @@ h2 {
     color: red;
 }
 
+.center {
+    text-align: center;
+}
+
+.center-block {
+    border: 1px dashed green;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
 .block {
     float: left;
     border: 1px dashed green;
     margin: 10px;
     border-radius: 5px;
+}
+
+.width300px {
+    width: 300px;
 }

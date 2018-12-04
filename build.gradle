@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath('com.github.ksoichiro:gradle-console-reporter:0.5.0')
+        classpath('com.google.code.gson:gson:2.8.5')
     }
 }
 
@@ -35,6 +36,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('com.google.code.gson:gson')
 
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('mysql:mysql-connector-java')
@@ -44,11 +46,40 @@ dependencies {
     testCompile('org.mockito:mockito-core:2.7.22')
 }
 
+def webappDir = "$projectDir/client"
+
 processResources {
+    dependsOn "buildAngular"
     from (sourceSets.main.java.srcDirs) {
         include("**/*.xml")
     }
     from (sourceSets.test.java.srcDirs) {
         include("**/*.json")
+    }
+}
+
+task buildAngular(type:Exec) {
+    // installAngular should be run prior to this task
+    // dependsOn "installAngular"
+    workingDir "$webappDir"
+    inputs.dir "$webappDir"
+    // Add task to the standard build group
+    group = BasePlugin.BUILD_GROUP
+    // ng doesn't exist as a file in windows -> ng.cmd
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine "ng.cmd", "build"
+    } else {
+        commandLine "ng", "build"
+    }
+}
+
+task installAngular(type:Exec) {
+    workingDir "$webappDir"
+    inputs.dir "$webappDir"
+    group = BasePlugin.BUILD_GROUP
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine "npm.cmd", "install"
+    } else {
+        commandLine "npm", "install"
     }
 }
