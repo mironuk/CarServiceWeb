@@ -20,7 +20,11 @@ export class HomeComponent implements OnInit {
 
     private showResult(): void {
         this.result = 'loading...';
-        this.http.get<TextWrapper>('/rest/show-result').subscribe(res => this.result = res.text);
+        this.http.get<TextWrapper>('http://localhost:8080/rest/show-result')
+                .subscribe(
+                        res => this.result = res.text,
+                        error => this.result = error.message
+                );
     }
 
 }
