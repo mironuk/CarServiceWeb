@@ -1,18 +1,55 @@
 html {
-    font-family: Open Sans;
+    font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
 body {
+    margin: 0px;
+    padding: 15px;
     background-color: lemonchiffon;
 }
 
 h1, div {
-    padding: 10px;
+    /* padding: 10px; */
+}
+
+h1, h1 a, h1 a:visited {
+    color: #007700;
+}
+
+h1 a:hover {
+    text-decoration: none;
+    color: #005a00;
 }
 
 h2 {
     color: red;
 }
+
+
+
+a, a:visited {
+    color: #00a000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #007700;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+a:active {
+    color: #00a000;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+a.active {
+    color: black;
+}
+
+
 
 .center {
     text-align: center;
@@ -21,16 +58,31 @@ h2 {
 .center-block {
     border: 1px dashed green;
     margin: 10px auto;
+    padding: 10px;
     border-radius: 5px;
 }
 
 .block {
     float: left;
     border: 1px dashed green;
-    margin: 10px;
+    margin: 10px 10px 10px 0px;
+    padding: 10px;
     border-radius: 5px;
 }
 
 .width300px {
     width: 300px;
+}
+
+.height70px {
+    height: 70px;
+}
+
+.min-height70px {
+    min-height: 70px;
+}
+
+.show-result-button {
+    width: 100px;
+    height: 30px;
 }
