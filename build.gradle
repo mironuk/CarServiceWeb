@@ -49,7 +49,7 @@ dependencies {
 def webappDir = "$projectDir/client"
 
 processResources {
-    dependsOn "buildAngular"
+    //dependsOn "buildAngular"
     from (sourceSets.main.java.srcDirs) {
         include("**/*.xml")
     }
