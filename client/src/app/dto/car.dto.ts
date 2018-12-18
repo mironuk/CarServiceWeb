@@ -7,5 +7,6 @@ export class CarDto {
     make: string;
     model: string;
     year: string;
+    color: string;
     description: string;
 }
