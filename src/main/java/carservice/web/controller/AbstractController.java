@@ -15,16 +15,16 @@ public abstract class AbstractController {
 
     protected static final String EMPTY_JSON = "{}";
 
-    protected ResponseEntity<String> validationFailedResponse(String validationErrorMessage) {
+    protected static ResponseEntity<String> validationFailedResponse(String validationErrorMessage) {
         return errorResponse(validationErrorMessage, HttpStatus.BAD_REQUEST);
     }
 
-    protected ResponseEntity<String> errorResponse(String errorMessage, HttpStatus httpStatus) {
+    protected static ResponseEntity<String> errorResponse(String errorMessage, HttpStatus httpStatus) {
         String bodyJson = gson.toJson(new ResponseErrorMessage(errorMessage));
         return new ResponseEntity<String>(bodyJson, httpStatus);
     }
 
-    protected Car carDtoToCarEntity(CarDto carDto) {
+    protected static Car carDtoToCarEntity(CarDto carDto) {
         User user = new User();
         user.setUserId(carDto.getUserId());
 
@@ -42,7 +42,7 @@ public abstract class AbstractController {
         return car;
     }
 
-    protected CarDto carEntityToCarDto(Car car) {
+    protected static CarDto carEntityToCarDto(Car car) {
         CarDto carDto = new CarDto();
         carDto.setCarId(car.getCarId());
         carDto.setUserId(car.getUser().getUserId());
@@ -57,11 +57,11 @@ public abstract class AbstractController {
         return carDto;
     }
 
-    protected String trim(String str) {
+    protected static String trim(String str) {
         return str != null ? str.trim() : null;
     }
 
-    protected Integer getIntegerFromString(String str) {
+    protected static Integer getIntegerFromString(String str) {
         if (str == null) {
             return null;
         }
@@ -72,7 +72,7 @@ public abstract class AbstractController {
         return Integer.valueOf(trimmed);
     }
 
-    protected String getStringFromInteger(Integer num) {
+    protected static String getStringFromInteger(Integer num) {
         if (num == null) {
             return null;
         }
