@@ -27,7 +27,6 @@ export class EditCarComponent implements OnInit {
     ngOnInit() {
 
         this.route.params.subscribe(params => {
-            console.log(params.id);
             if (params.id) {
                 this.carId = params.id;
                 this.load(params.id)

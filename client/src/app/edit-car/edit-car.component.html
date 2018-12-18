@@ -28,19 +28,19 @@
     <div>
         <label>Make <span class="bold red">*</span></label>
         <input type="text" [(ngModel)]="car.make" name="make" [class.inputError]="makeError"/>
-        <div class="validation " [class.red]="makeError">This field is required</div>
+        <div *ngIf="makeError" class="validation red">This field is required</div>
     </div>
 
     <div>
         <label>Model <span class="bold red">*</span></label>
         <input type="text" [(ngModel)]="car.model" name="model" [class.inputError]="modelError"/>
-        <div class="validation " [class.red]="modelError">This field is required</div>
+        <div *ngIf="modelError" class="validation red">This field is required</div>
     </div>
 
     <div>
         <label>Year</label>
         <input type="text" [(ngModel)]="car.year" name="year" [class.inputError]="yearError"/>
-        <div class="validation " [class.red]="yearError">{{(yearErrorMessage)}}</div>
+        <div *ngIf="yearError" class="validation red">{{(yearErrorMessage)}}</div>
     </div>
 
     <div>

@@ -1,6 +1,8 @@
 package carservice.web.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,13 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import carservice.web.data.dto.CarDto;
 import carservice.web.data.model.Car;
-import carservice.web.data.model.User;
 import carservice.web.service.CarService;
 
 @RestController()
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/rest", consumes = { "*/*", "application/json" }, produces = "application/json")
 public class CarController extends AbstractController {
+
+    private static final int MIN_CAR_YEAR = 1950;
 
     @Autowired
     private CarService carService;
@@ -63,16 +66,33 @@ public class CarController extends AbstractController {
 
     @PostMapping("/save-car")
     public ResponseEntity<?> saveCar(@RequestBody String carJson) {
-        System.out.println("saveCar() method started.");
         CarDto carDto = gson.fromJson(carJson, CarDto.class);
-        System.out.println(carDto);
-        // TODO: validation
-        Car car = carDtoToCarEntity(carDto);
-        if (carDto.getYear() == null) {
-            return validationFailedResponse("Validation failed");
+        if (isEmpty(carDto.getMake())) {
+            return validationFailedResponse("Validation failed: make is empty");
+        } else if (isEmpty(carDto.getModel())) {
+            return validationFailedResponse("Validation failed: model is empty");
+        } else if (!isEmpty(carDto.getYear()) && !isYearValid(carDto.getYear())) {
+            return validationFailedResponse("Validation failed: year is wrong");
         } else {
+            Car car = carDtoToCarEntity(carDto);
             carService.saveCar(car);
             return ResponseEntity.ok(EMPTY_JSON);
+        }
+    }
+
+    private boolean isYearValid(String yearString) {
+        if (yearString == null) {
+            return true;
+        }
+        if (yearString.trim().equals("")) {
+            return true;
+        }
+        try {
+            int currentYear = new GregorianCalendar().get(Calendar.YEAR);
+            int year = Integer.valueOf(yearString.trim());
+            return year >= MIN_CAR_YEAR && year <= currentYear;
+        } catch (NumberFormatException ex) {
+            return false;
         }
     }
 
@@ -80,81 +100,6 @@ public class CarController extends AbstractController {
     public ResponseEntity<?> deleteCarById(@PathVariable("carId") long carId) {
         carService.deleteCarById(carId);
         return ResponseEntity.ok(EMPTY_JSON);
-    }
-
-    private ResponseEntity<String> validationFailedResponse(String validationErrorMessage) {
-        return errorResponse(validationErrorMessage, HttpStatus.PRECONDITION_FAILED);
-    }
-
-    private ResponseEntity<String> errorResponse(String errorMessage, HttpStatus httpStatus) {
-        String bodyJson = gson.toJson(new ResponseErrorMessage(errorMessage));
-        return new ResponseEntity<String>(bodyJson, httpStatus);
-    }
-
-    private Car carDtoToCarEntity(CarDto carDto) {
-        User user = new User();
-        user.setUserId(carDto.getUserId());
-
-        Car car = new Car();
-        car.setCarId(carDto.getCarId());
-        car.setUser(user);
-        car.setNickname(trim(carDto.getNickname()));
-        car.setVin(trim(carDto.getVin()));
-        car.setLicensePlate(trim(carDto.getLicensePlate()));
-        car.setMake(trim(carDto.getMake()));
-        car.setModel(trim(carDto.getModel()));
-        car.setYear(getIntegerFromString(carDto.getYear()));
-        car.setColor(trim(carDto.getColor()));
-        car.setDescription(trim(carDto.getDescription()));
-        return car;
-    }
-
-    private Integer getIntegerFromString(String str) {
-        if (str == null) {
-            return null;
-        }
-        String trimmed = trim(str);
-        if (trimmed.equals("")) {
-            return null;
-        }
-        return Integer.valueOf(trimmed);
-    }
-
-    private String trim(String str) {
-        return str != null ? str.trim() : null;
-    }
-
-    private CarDto carEntityToCarDto(Car car) {
-        CarDto carDto = new CarDto();
-        carDto.setCarId(car.getCarId());
-        carDto.setUserId(car.getUser().getUserId());
-        carDto.setNickname(car.getNickname());
-        carDto.setVin(car.getVin());
-        carDto.setLicensePlate(car.getLicensePlate());
-        carDto.setMake(car.getMake());
-        carDto.setModel(car.getModel());
-        carDto.setYear(String.valueOf(car.getYear()));
-        carDto.setColor(car.getColor());
-        carDto.setDescription(car.getDescription());
-        return carDto;
-    }
-
-}
-
-class ResponseErrorMessage {
-
-    private String message;
-
-    public ResponseErrorMessage(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
 }
