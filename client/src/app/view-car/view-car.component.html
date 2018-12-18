@@ -1,1 +1,50 @@
 <h2>View Car</h2>
+
+<div class="errorMessage" [hidden]="!errorMessage">{{errorMessage}}</div>
+
+<form>
+    <div>
+        <label>Car ID</label>
+        <span>{{car.carId}}</span>
+    </div>
+
+    <div>
+        <label>Nickname</label>
+        <span>{{car.nickname}}</span>
+    </div>
+
+    <div>
+        <label>VIN</label>
+        <span>{{car.vin}}</span>
+    </div>
+
+    <div>
+        <label>License Plate</label>
+        <span>{{car.licensePlate}}</span>
+    </div>
+
+    <div>
+        <label>Make</label>
+        <span>{{car.make}}</span>
+    </div>
+
+    <div>
+        <label>Model</label>
+        <span>{{car.model}}</span>
+    </div>
+
+    <div>
+        <label>Year</label>
+        <span>{{car.year}}</span>
+    </div>
+
+    <div>
+        <label>Color</label>
+        <span>{{car.color}}</span>
+    </div>
+
+    <div>
+        <label>Description</label>
+        <span>{{car.description}}</span>
+    </div>
+</form>

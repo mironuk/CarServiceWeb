@@ -1,5 +1,50 @@
 <h2>My Cars</h2>
 
-<a routerLink="/view-car" routerLinkActive="active">View Car</a>
-|
-<a routerLink="/edit-car" routerLinkActive="active">Edit Car</a>
+<div class="errorMessage" [hidden]="!errorMessage">{{errorMessage}}</div>
+
+<div class="margin-bottom-15px">
+    <a routerLink="./" (click)="getCars()">Refresh</a>
+    |
+    <a routerLink="/car/new">New car</a>
+</div>
+
+<table class="full-width">
+    <tr *ngIf="cars.length == 0" class="border-above-below odd">
+        <td *ngIf="progress" class="bold mid">Loading...</td>
+        <td *ngIf="!progress" class="bold mid">No cars</td>
+    </tr>
+    <tr *ngIf="cars.length > 0" class="border-above-below odd">
+        <td class="bold mid">Car ID</td>
+        <td class="bold">Nickname</td>
+        <td class="bold">VIN</td>
+        <td class="bold">License Plate</td>
+        <td class="bold">Make</td>
+        <td class="bold">Model</td>
+        <td class="bold">Year</td>
+        <td class="bold">Color</td>
+        <td class="bold">Description</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr *ngFor="let car of cars; let odd = odd; let last = last" [ngClass]="{ 'odd': odd, 'border-below': last }">
+        <td class="mid">{{car.carId}}</td>
+        <td>{{car.nickname}}</td>
+        <td>{{car.vin}}</td>
+        <td>{{car.licensePlate}}</td>
+        <td>{{car.make}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.year}}</td>
+        <td>{{car.color}}</td>
+        <td>{{car.description}}</td>
+        <td><a routerLink="/car/{{car.carId}}">View</a></td>
+        <td><a routerLink="/car/edit/{{car.carId}}">Edit</a></td>
+        <td><a routerLink="./" (click)="deleteCar(car.carId)">Delete</a></td>
+    </tr>
+</table>
+
+<div class="margin-bottom-15px">
+    <a routerLink="./" (click)="getCars()">Refresh</a>
+    |
+    <a routerLink="/car/new">New car</a>
+</div>

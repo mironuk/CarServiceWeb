@@ -20,8 +20,8 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
-    public void createCar(Car car) {
-        carServiceTx.createCar(car);
+    public void saveCar(Car car) {
+        carServiceTx.saveCar(car);
     }
 
     public List<Car> getCars() {
@@ -32,8 +32,12 @@ public class CarService {
         return carRepository.findById(carId);
     }
 
+    public void deleteCarById(long carId) {
+        carServiceTx.deleteCarById(carId);
+    }
+
     public void createServiceItem(ServiceItem serviceItem) {
-        
+
     }
 
     public List<ServiceItem> getServiceItems(long carId) {
