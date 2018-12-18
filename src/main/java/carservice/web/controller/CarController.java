@@ -29,15 +29,20 @@ public class CarController extends AbstractController {
     @Autowired
     private CarService carService;
 
+    // TODO: implement this method somewhere else
+    private static long getCurrentUserId() {
+        return 1;
+    }
+
     @GetMapping("/car/{carId}")
     public ResponseEntity<?> getCar(@PathVariable("carId") String carIdString) {
         try {
             long carId = Long.valueOf(carIdString);
-            Optional<Car> optionalCar = carService.getCar(carId);
+            Optional<Car> optionalCar = carService.getCarById(carId);
             if (!optionalCar.isPresent()) {
                 return errorResponse("Car not found for this carId", HttpStatus.NOT_FOUND);
             }
-            Car car = carService.getCar(carId).get();
+            Car car = optionalCar.get();
             CarDto carDto = carEntityToCarDto(car);
             String bodyJson = gson.toJson(carDto, CarDto.class);
             return ResponseEntity.ok(bodyJson);
@@ -48,8 +53,7 @@ public class CarController extends AbstractController {
 
     @GetMapping("/list-cars")
     public String getCars() {
-        // TODO: get cars for one user only
-        List<Car> cars = carService.getCars();
+        List<Car> cars = carService.getAllCarsByUserId(getCurrentUserId());
         List<CarDto> carDtos = new ArrayList<CarDto>();
         for (Car car : cars) {
             carDtos.add(carEntityToCarDto(car));

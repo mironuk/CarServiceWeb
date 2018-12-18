@@ -45,7 +45,7 @@ public class CarServiceTest {
 
         // Assert
         long carId = car.getCarId();
-        Car testCar = carService.getCar(carId).get();
+        Car testCar = carService.getCarById(carId).get();
         assertNotNull(testCar);
 
         assertEquals("Mazda", testCar.getMake());

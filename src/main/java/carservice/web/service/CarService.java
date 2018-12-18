@@ -3,6 +3,9 @@ package carservice.web.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +23,26 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
+    @Autowired
+    private EntityManager entityManager;
+
+    private Session getSession() {
+        return entityManager.unwrap(Session.class);
+    }
+
     public void saveCar(Car car) {
         carServiceTx.saveCar(car);
     }
 
-    public List<Car> getCars() {
-        return carRepository.findAll();
+    public List<Car> getAllCarsByUserId(long userId) {
+        List<Car> result = getSession()
+                .createNamedQuery(Car.FIND_ALL_CARS_BY_USER_ID, Car.class)
+                .setParameter("userId", userId)
+                .getResultList();
+        return result;
     }
 
-    public Optional<Car> getCar(long carId) {
+    public Optional<Car> getCarById(long carId) {
         return carRepository.findById(carId);
     }
 

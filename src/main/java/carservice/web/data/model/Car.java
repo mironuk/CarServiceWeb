@@ -8,12 +8,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="car")
+@NamedQueries({
+    @NamedQuery(
+            name = Car.FIND_ALL_CARS_BY_USER_ID,
+            query = "from Car c where c.user.userId = :userId order by c.carId"
+    )
+})
 public class Car {
+
+    public static final String FIND_ALL_CARS_BY_USER_ID = "findAllCarsByUserId";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
