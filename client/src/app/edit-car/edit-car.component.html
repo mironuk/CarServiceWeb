@@ -1,5 +1,4 @@
-<h2 *ngIf="!carId">New Car</h2>
-<h2 *ngIf="carId">Edit Car</h2>
+<h2>{{pageTitle}}</h2>
 
 <div class="errorMessage" [hidden]="!errorMessage">{{errorMessage}}</div>
 
@@ -55,8 +54,7 @@
 
     <div>
         <label></label>
-        <button type="submit" *ngIf="!carId">Save</button>
-        <button type="submit" *ngIf="carId">Update</button>
+        <button type="submit">{{submitButtonTitle}}</button>
     </div>
 
 </form>

@@ -14,6 +14,7 @@ export class MyCarsComponent implements OnInit {
     private errorMessage = '';
     private cars = [];
     private progress = true;
+    private tableMessage = '';
 
     constructor(private http: HttpClient) { }
 
@@ -24,12 +25,21 @@ export class MyCarsComponent implements OnInit {
     private getCars(): void {
         this.errorMessage = '';
         this.cars = [];
-        this.progress = true;
+        this.setProgress(true);
         this.http.get<CarDto[]>(Utils.getRestUri() + 'list-cars')
                 .subscribe(
-                        res => { this.cars = res; this.progress = false; },
-                        error => { this.errorMessage = Utils.getError(error); this.progress = false; }
+                        res   => { this.setProgress(false); this.cars = res; },
+                        error => { this.setProgress(false); this.errorMessage = Utils.getError(error); }
                 );
+    }
+
+    private setProgress(progress: boolean): void {
+        this.progress = progress;
+        if (progress) {
+            this.tableMessage = 'Loading...';
+        } else {
+            this.tableMessage = 'No cars';
+        }
     }
 
     private deleteCar(carId: number): void {

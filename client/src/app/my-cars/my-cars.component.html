@@ -10,8 +10,7 @@
 
 <table class="full-width">
     <tr *ngIf="cars.length == 0" class="border-above-below odd">
-        <td *ngIf="progress" class="bold mid">Loading...</td>
-        <td *ngIf="!progress" class="bold mid">No cars</td>
+        <td class="bold mid">{{tableMessage}}</td>
     </tr>
     <tr *ngIf="cars.length > 0" class="border-above-below odd">
         <td class="bold mid">Car ID</td>

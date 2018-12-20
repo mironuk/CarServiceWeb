@@ -12,6 +12,9 @@ import { Utils } from '../utils/utils';
 })
 export class EditCarComponent implements OnInit {
 
+    private pageTitle = 'New Car';
+    private submitButtonTitle = 'Save';
+
     private errorMessage = '';
     private yearErrorMessage = '';
 
@@ -29,7 +32,9 @@ export class EditCarComponent implements OnInit {
         this.route.params.subscribe(params => {
             if (params.id) {
                 this.carId = params.id;
-                this.load(params.id)
+                this.load(params.id);
+                this.pageTitle = 'Edit Car';
+                this.submitButtonTitle = 'Update';
             }
         });
 
