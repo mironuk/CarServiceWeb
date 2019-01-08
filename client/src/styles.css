@@ -1,5 +1,5 @@
 html {
-    font-family: "Trebuchet MS", Arial, sans-serif;
+    font: 12pt "Trebuchet MS", Arial, sans-serif;
 }
 
 body {
@@ -22,7 +22,7 @@ h1 a:hover {
 }
 
 h2 {
-    color: red;
+    color: #00a000;
 }
 
 
@@ -47,6 +47,90 @@ a:active {
 
 a.active {
     color: black;
+}
+
+
+
+input, textarea, select {
+    margin: 0px;
+    padding: 1px !important;
+    border: 1px solid #00a000;
+    background-color: #f5fff5;
+    border-radius: 3px;
+    font: 12pt "Trebuchet MS", Arial, sans-serif;
+}
+
+form {
+    margin: 0px 0px 30px 0px;
+}
+
+form div {
+    vertical-align: top;
+    padding-top: 2px;
+    margin-bottom: 15px;
+}
+
+form div label {
+    vertical-align: top;
+    display: inline-block;
+    width: 150px;
+    margin-right: 15px;
+}
+
+form div input {
+    width: 300px;
+}
+
+form div textarea {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 77px;
+    max-height: 300px;
+}
+
+form div button {
+    width: 304px;
+    height: 30px;
+}
+
+form div .inputError {
+    border: 1px solid red;
+    background-color: #fff5f5;
+}
+
+form div.validation {
+    display: inline-block;
+    margin-left: 15px;
+    margin-bottom: 0px !important;
+    text-align: center;
+}
+
+div.errorMessage {
+    width: 436px;
+    border: 2px solid red;
+    border-radius: 3px;
+    padding: 15px;
+    color: red;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+div.footnote {
+    width: 437px;
+    border: 1px solid green;
+    border-radius: 3px;
+    padding: 15px;
+    color: green;
+}
+
+
+
+.bold {
+    font-weight: bold;
+}
+
+.red {
+    color: red;
 }
 
 
@@ -85,4 +169,45 @@ a.active {
 .show-result-button {
     width: 100px;
     height: 30px;
+}
+
+.margin-bottom-15px {
+    margin-bottom: 15px;
+}
+
+
+table {
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 15px;
+}
+
+table, th, td {
+    border-top: 1px solid #00a000;
+    border-bottom: 1px solid #00a000;
+}
+
+tr.odd {
+    background-color: #fffded;
+}
+
+tr.border-above-below td {
+    border-top: 2px solid #00aa00;
+    border-bottom: 2px solid #00aa00;
+}
+
+tr.border-below td {
+    border-bottom: 2px solid #00aa00;
+}
+
+td {
+    padding: 10px;
+}
+
+td.mid {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
 }

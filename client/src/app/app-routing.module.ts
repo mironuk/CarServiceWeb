@@ -22,10 +22,12 @@ const routes: Routes = [
     { path: 'logout', component: LogoutComponent },
     { path: 'my-cars', component: MyCarsComponent },
     { path: 'my-service-items', component: MyServiceItemsComponent },
-    { path: 'view-car', component: ViewCarComponent },
-    { path: 'edit-car', component: EditCarComponent },
-    { path: 'view-service-item', component: ViewServiceItemComponent },
-    { path: 'edit-service-item', component: EditServiceItemComponent },
+    { path: 'car/edit/:id', component: EditCarComponent },
+    { path: 'car/new', component: EditCarComponent },
+    { path: 'car/:id', component: ViewCarComponent },
+    { path: 'service-item/edit/:id', component: EditServiceItemComponent },
+    { path: 'service-item/new', component: EditServiceItemComponent },
+    { path: 'service-item/:id', component: ViewServiceItemComponent },
     { path: '**', component: PageNotFoundComponent },
 ];
 

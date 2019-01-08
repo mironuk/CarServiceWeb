@@ -14,8 +14,12 @@ public class CarServiceTx {
     @Autowired
     private CarRepository carRepository;
 
-    public void createCar(Car car) {
+    public void saveCar(Car car) {
         carRepository.save(car);
+    }
+
+    public void deleteCarById(long carId) {
+        carRepository.deleteById(carId);
     }
 
 }

@@ -43,16 +43,16 @@ public class CarServiceTest {
         car.setYear(2004);
 
         // Act
-        carService.createCar(car);
+        carService.saveCar(car);
 
         // Assert
         long carId = car.getCarId();
-        Car testCar = carService.getCar(carId).get();
+        Car testCar = carService.getCarById(carId).get();
         assertNotNull(testCar);
 
         assertEquals("Mazda", testCar.getMake());
         assertEquals("3", testCar.getModel());
-        assertEquals(2004, testCar.getYear());
+        assertEquals(Integer.valueOf(2004), testCar.getYear());
     }
 
 }

@@ -1,1 +1,62 @@
-<h2>Edit Car</h2>
+<h2>{{pageTitle}}</h2>
+
+<div class="errorMessage" [hidden]="!errorMessage">{{errorMessage}}</div>
+
+<form (ngSubmit)="save()">
+
+    <div *ngIf="carId">
+        <label>Car ID</label>
+        <span>{{car.carId}}</span>
+    </div>
+
+    <div>
+        <label>Nickname</label>
+        <input type="text" [(ngModel)]="car.nickname" name="nickname"/>
+    </div>
+
+    <div>
+        <label>VIN</label>
+        <input type="text" [(ngModel)]="car.vin" name="vin"/>
+    </div>
+
+    <div>
+        <label>License Plate</label>
+        <input type="text" [(ngModel)]="car.licensePlate" name="licensePlate"/>
+    </div>
+
+    <div>
+        <label>Make <span class="bold red">*</span></label>
+        <input type="text" [(ngModel)]="car.make" name="make" [class.inputError]="makeError"/>
+        <div *ngIf="makeError" class="validation red">This field is required</div>
+    </div>
+
+    <div>
+        <label>Model <span class="bold red">*</span></label>
+        <input type="text" [(ngModel)]="car.model" name="model" [class.inputError]="modelError"/>
+        <div *ngIf="modelError" class="validation red">This field is required</div>
+    </div>
+
+    <div>
+        <label>Year</label>
+        <input type="text" [(ngModel)]="car.year" name="year" [class.inputError]="yearError"/>
+        <div *ngIf="yearError" class="validation red">{{(yearErrorMessage)}}</div>
+    </div>
+
+    <div>
+        <label>Color</label>
+        <input type="text" [(ngModel)]="car.color" name="color"/>
+    </div>
+
+    <div>
+        <label>Description</label>
+        <textarea [(ngModel)]="car.description" name="description"></textarea>
+    </div>
+
+    <div>
+        <label></label>
+        <button type="submit">{{submitButtonTitle}}</button>
+    </div>
+
+</form>
+
+<div class="footnote"><span class="bold red">*</span> Fields marked with a star are required.</div>
