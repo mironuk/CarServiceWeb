@@ -1,3 +1,8 @@
 {
-    "meow": "meow"
+    "meow": "meow",
+    "data": {
+        "color": "black",
+        "meowType": "annoying"
+    },
+    "cat": "Barseeq"
 }
