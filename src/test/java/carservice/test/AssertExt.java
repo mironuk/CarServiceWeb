@@ -14,28 +14,25 @@ public class AssertExt {
     }
 
     public static void assertJsonFilesEqual(Class<?> clazz, String expectedJsonPath, String actualJsonPath) {
-        Reader r1 = TestUtils.getReader(clazz, expectedJsonPath);
-        Reader r2 = TestUtils.getReader(clazz, actualJsonPath);
+        Reader expectedReader = TestUtils.getReader(clazz, expectedJsonPath);
+        Reader actualReader = TestUtils.getReader(clazz, actualJsonPath);
 
-        JsonReader expectedJsonReader = new JsonReader(r1);
-        JsonReader actualJsonReader = new JsonReader(r2);
-
-        assertJsonsEqual(expectedJsonReader, actualJsonReader);
+        assertJsonsEqual(expectedReader, actualReader);
     }
 
     public static void assertJsonsEqual(String expectedJson, String actualJson) {
-        Reader r1 = new StringReader(expectedJson);
-        Reader r2 = new StringReader(actualJson);
+        Reader expectedReader = new StringReader(expectedJson);
+        Reader actualReader = new StringReader(actualJson);
 
-        JsonReader expectedJsonReader = new JsonReader(r1);
-        JsonReader actualJsonReader = new JsonReader(r2);
-
-        assertJsonsEqual(expectedJsonReader, actualJsonReader);
+        assertJsonsEqual(expectedReader, actualReader);
     }
 
-    public static void assertJsonsEqual(JsonReader expectedJson, JsonReader actualJson) {
-        JsonElement el1 = TestUtils.readJson(expectedJson);
-        JsonElement el2 = TestUtils.readJson(actualJson);
+    public static void assertJsonsEqual(Reader expectedJson, Reader actualJson) {
+        JsonReader expectedJsonReader = new JsonReader(expectedJson);
+        JsonReader actualJsonReader = new JsonReader(actualJson);
+
+        JsonElement el1 = TestUtils.readJson(expectedJsonReader);
+        JsonElement el2 = TestUtils.readJson(actualJsonReader);
 
         if (!el1.equals(el2)) {
             String jsonStr1 = el1.toString();

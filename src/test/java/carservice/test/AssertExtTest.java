@@ -18,8 +18,8 @@ public class AssertExtTest {
     @Test
     public void givenEqualJsons_whenAssertJsonsEqual_thenSuccess() {
         // Arrange
-        String json1 = "{ \"meow\": \"meow\" }";
-        String json2 = "{ \"meow\": \"meow\" }";;
+        String json1 = TestUtils.getResourceAsString(AssertExtTest.class, "f1.json");
+        String json2 = TestUtils.getResourceAsString(AssertExtTest.class, "f1.json");
 
         // Act & Assert
         AssertExt.assertJsonsEqual(json1, json2);
@@ -28,8 +28,8 @@ public class AssertExtTest {
     @Test(expected = ComparisonFailure.class)
     public void givenUnequalJsons_whenAssertJsonsEqual_thenComparisonFailure() {
         // Arrange
-        String json1 = "{ \"meow\": \"meow\" }";
-        String json2 = "{ \"meow\": \"meown't\" }";
+        String json1 = TestUtils.getResourceAsString(AssertExtTest.class, "f1.json");
+        String json2 = TestUtils.getResourceAsString(AssertExtTest.class, "f3.json");
 
         // Act & Assert
         AssertExt.assertJsonsEqual(json1, json2);
