@@ -1,0 +1,12 @@
+{
+    "number": 1,
+    "boolean": true,
+    "anotherBoolean": false,
+    "array": [1, 2],
+    "string": "str",
+    "null": null,
+    "object": {
+        "a": 1,
+        "b": "yes"
+    }
+}

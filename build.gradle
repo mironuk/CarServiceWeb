@@ -44,6 +44,7 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-aop')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.mockito:mockito-core:2.7.22')
+    testCompile('commons-io:commons-io:2.6')
 }
 
 def webappDir = "$projectDir/client"
