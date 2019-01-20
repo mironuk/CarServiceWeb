@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 })
 public class Car {
 
-    public static final String FIND_ALL_CARS_BY_USER_ID = "findAllCarsByUserId";
+    public static final String FIND_ALL_CARS_BY_USER_ID = "Car.findAllCarsByUserId";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
