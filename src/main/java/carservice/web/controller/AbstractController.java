@@ -57,8 +57,18 @@ public abstract class AbstractController {
         return carDto;
     }
 
+    /**
+     * Returns null if string parameter is null or trimmed string is empty.
+     */
     protected static String trim(String str) {
-        return str != null ? str.trim() : null;
+        if (str == null) {
+            return null;
+        }
+        String result = str.trim();
+        if (result.isEmpty()) {
+            return null;
+        }
+        return result;
     }
 
     protected static Integer getIntegerFromString(String str) {
